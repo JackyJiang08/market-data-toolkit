@@ -1,0 +1,15 @@
+# Generated data artifacts (regenerate by running the pipeline)
+output/*.xlsx
+output/*.csv
+output/*.parquet
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.ipynb_checkpoints/

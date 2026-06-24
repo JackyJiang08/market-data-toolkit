@@ -1,0 +1,2 @@
+# This file keeps the output/ directory in version control while the generated
+# workbooks themselves are ignored (see .gitignore). The pipeline writes here.

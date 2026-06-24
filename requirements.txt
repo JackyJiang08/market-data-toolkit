@@ -1,0 +1,6 @@
+# Equity & Rates Data Pipeline -- Python dependencies
+# Install with:  pip3 install -r requirements.txt
+yfinance>=0.2.40
+pandas>=1.5
+openpyxl>=3.1
+requests>=2.28
