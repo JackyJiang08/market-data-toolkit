@@ -531,6 +531,7 @@ def _melt_statement(df: pd.DataFrame, ticker: str, as_of: str,
     if df is None or df.empty:
         return pd.DataFrame(columns=LONG_COLUMNS)
     t = df.copy()
+    t.columns = pd.to_datetime(t.columns, errors="coerce").strftime("%Y-%m-%d")
     t.index.name = "Metric"
     long = t.reset_index().melt(id_vars="Metric", var_name="Period",
                                 value_name="Value")
