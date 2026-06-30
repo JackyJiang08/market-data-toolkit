@@ -1,12 +1,13 @@
 #!/bin/bash
 # ===========================================================================
-#  Equity & Rates Data Pipeline  --  double-click launcher
+#  Market Data Toolkit  --  double-click launcher
 # ===========================================================================
-#  Downloads, into the "output" folder:
+#  Produces, into the "output" folder:
 #    - per-company workbooks: prices, dividends, market cap, debt &
-#      liabilities, quarterly + annual financials
-#    - a master workbook: company summary, debt snapshot, and macro rates
-#      (1-Year Treasury + SOFR)
+#      liabilities, the date-aligned model panel, quarterly + annual
+#      financials, and a Merton/KMV credit estimate
+#    - a master workbook: company + credit + debt summaries and macro rates
+#    - a tidy long table (CSV/Parquet) for analysis
 # ===========================================================================
 
 cd "$(dirname "$0")" || exit 1
@@ -21,9 +22,9 @@ fi
 
 clear
 echo "============================================================"
-echo "   EQUITY & RATES DATA PIPELINE"
-echo "   prices + dividends + market cap + debt/liabilities"
-echo "   + quarterly/annual financials + 1Y Treasury & SOFR"
+echo "   MARKET DATA TOOLKIT"
+echo "   prices + market cap + debt/liabilities + financials"
+echo "   + 1Y Treasury & SOFR + Merton/KMV credit model"
 echo "============================================================"
 echo
 echo "Default universe (press Enter to use):"
@@ -35,7 +36,7 @@ YEARS="${YEARS:-2}"
 
 echo
 echo "------------------------------------------------------------"
-"$PY" stock_data_pipeline.py $TICKERS --years "$YEARS"
+"$PY" run.py $TICKERS --years "$YEARS"
 STATUS=$?
 echo "------------------------------------------------------------"
 if [ $STATUS -eq 0 ]; then
